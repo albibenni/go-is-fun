@@ -16,3 +16,17 @@ func getIssueData() ([]byte, error) {
 	data, err := io.ReadAll(res.Body)
 	return data, err
 }
+
+func getProjects() ([]byte, error) {
+	res, err := http.Get("https://api.jello.com/projects")
+	if err != nil {
+		return []byte{}, fmt.Errorf("error making request: %w", err)
+	}
+	defer res.Body.Close()
+
+	data, err := io.ReadAll(res.Body)
+	if err != nil {
+		return []byte{}, fmt.Errorf("error reading response: %w", err)
+	}
+	return data, nil
+}

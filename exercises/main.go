@@ -8,4 +8,8 @@ func main() {
 	printArg()
 
 	fmt.Printf("------ Exercises -------\n")
+
+	printArgByLines()
+
+	fmt.Printf("------ Exercises -------\n")
 }

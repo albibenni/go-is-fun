@@ -7,8 +7,15 @@ type Course struct {
 	Type string
 	Cost int
 }
+type Coursable interface {
+	PrintIt() string
+}
 
 func (c Course) String() string {
+	return fmt.Sprintf("Name: %s, Type: %s, Cost: %d \n", c.Name, c.Type, c.Cost)
+}
+
+func (c Course) PrintIt() string {
 	return fmt.Sprintf("Name: %s, Type: %s, Cost: %d \n", c.Name, c.Type, c.Cost)
 }
 
@@ -36,6 +43,8 @@ func printThem() {
 			Cost: 10,
 		},
 	}
+
+
 	fmt.Printf("%v \n", wNonPrintable)
 	fmt.Printf("%v \n", wPrintable)
 }

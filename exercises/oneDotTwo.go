@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func printArgByLines() {
@@ -15,4 +16,8 @@ func printArgByLines() {
 	for index, value := range arMap {
 		fmt.Printf("map: index %v, value %v \n", index, value)
 	}
+}
+
+func WithJoin() {
+	fmt.Println(strings.Join(os.Args[1:], " "))
 }

@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"http2/cex"
 )
 
 func main() {
-	cex.GetRate("BTC")
+	res, err := cex.GetRate("BTC")
+	fmt.Printf("res: %v,   errors? %v", *res, err)
 }

@@ -9,21 +9,22 @@ func main() {
 	fmt.Printf("------ Exercises -------\n")
 
 	startHere := time.Now()
-	printArg()
-	getElapsedTime(startHere)
+	// printArg()
+	// GetElapsedTime(startHere)
+	//
+	// fmt.Printf("------ Exercises -------\n")
+	//
+	// startHere2 := time.Now()
+	// WithJoin()
+	// fmt.Printf("------ Exercises -------\n")
+	//
+	// printArgByLines()
+	Names()
 
-	fmt.Printf("------ Exercises -------\n")
-
-	startHere2 := time.Now()
-	WithJoin()
-	getElapsedTime(startHere2)
-	fmt.Printf("------ Exercises -------\n")
-
-	printArgByLines()
-
+	GetElapsedTime(startHere)
 	fmt.Printf("------ Exercises -------\n")
 }
 
-func getElapsedTime(t time.Time) {
+func GetElapsedTime(t time.Time) {
 	fmt.Printf("%d elapsed\n", time.Since(t).Nanoseconds())
 }

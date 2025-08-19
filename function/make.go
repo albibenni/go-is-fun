@@ -30,4 +30,20 @@ func main() {
 	newSlice = append(newSlice, 6) // now length=6, capacity grows (typically doubles)
 
 	fmt.Printf("Slice with length now of %d with append, capacity -func cap() %d: %v\n", len(newSlice), cap(newSlice), newSlice)
+
+	// make(map[KeyType]ValueType)
+	m1 := make(map[string]int)      // Creates empty map
+	m2 := make(map[string]int, 100) // Creates map with initial space for ~100 elements (hint)
+
+	fmt.Printf("maps %v \n", m1)
+	fmt.Printf("maps %v \n", m2)
+
+	// make(chan Type) - unbuffered channel
+	ch1 := make(chan int)
+
+	// make(chan Type, buffer_size) - buffered channel
+	ch2 := make(chan string, 10) // Buffer size of 10
+
+	fmt.Printf("channels %v \n", ch1)
+	fmt.Printf("channels %v \n", ch2)
 }

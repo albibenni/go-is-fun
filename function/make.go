@@ -28,4 +28,6 @@ func main() {
 	newSlice = append(newSlice, 4) // now length=4, capacity still=5
 	newSlice = append(newSlice, 5) // now length=5, capacity=5
 	newSlice = append(newSlice, 6) // now length=6, capacity grows (typically doubles)
+
+	fmt.Printf("Slice with length now of %d with append, capacity -func cap() %d: %v\n", len(newSlice), cap(newSlice), newSlice)
 }

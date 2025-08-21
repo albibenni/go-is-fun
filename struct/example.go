@@ -12,6 +12,11 @@ type ExampleWithEmbedded struct {
 	Another string
 }
 
+type ExampleWithNested struct {
+	Example Example
+	Another string
+}
+
 func main() {
 	myExample := Example{
 		Hello: "Hello albibenni",
@@ -38,7 +43,13 @@ func main() {
 		Another: "some",
 	}
 
+	exampleWithNested := ExampleWithEmbedded{
+		Example: myExample,
+		Another: "SOme",
+	}
 	fmt.Printf("-------%v\n", exampleWithEmbedded)
-	fmt.Printf("-------%v\n", exampleWithEmbedded.Example)
+	fmt.Printf("accessing with Example prop-------%v\n", exampleWithEmbedded.Example)
+	fmt.Printf("accessing Example prop directly without Example field -------%v\n", exampleWithEmbedded.Hello)
+	fmt.Printf("-------%v\n", exampleWithNested)
 
 }

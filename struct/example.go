@@ -39,5 +39,6 @@ func main() {
 	}
 
 	fmt.Printf("-------%v\n", exampleWithEmbedded)
+	fmt.Printf("-------%v\n", exampleWithEmbedded.Example)
 
 }

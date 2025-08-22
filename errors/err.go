@@ -21,4 +21,11 @@ func main() {
 	}
 
 	fmt.Println(err)
+	es := testOther()
+	fmt.Println(es)
+	fmt.Println(es.Error())
+}
+
+func testOther() error {
+	return fmt.Errorf("test err")
 }

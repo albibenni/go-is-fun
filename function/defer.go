@@ -11,6 +11,8 @@ func main() {
 	multipleDefersFor()
 	fmt.Println("-------")
 	fmt.Printf("defer modifying return value from 5 to: %d\n", example())
+	fmt.Println("-------")
+	safeFunction()
 	fmt.Println("Ending main function")
 }
 func multipleDefers() {
@@ -34,4 +36,16 @@ func example() (result int) {
 		result++ // Modifies the return value
 	}()
 	return 5 // Actually returns 6
+}
+
+func safeFunction() {
+
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered from panic:", r)
+		}
+	}()
+	panic(fmt.Sprintf("panic but not too much because we recover()"))
+
+	// Code that might panic
 }

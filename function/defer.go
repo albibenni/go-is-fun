@@ -9,6 +9,8 @@ func main() {
 	fmt.Println("-------")
 
 	multipleDefersFor()
+	fmt.Println("-------")
+	fmt.Printf("defer modifying return value from 5 to: %d\n", example())
 	fmt.Println("Ending main function")
 }
 func multipleDefers() {
@@ -25,4 +27,11 @@ func multipleDefersFor() {
 	for i := 0; i < 10; i++ {
 		defer fmt.Printf("defer %d\n", i)
 	}
+}
+
+func example() (result int) {
+	defer func() {
+		result++ // Modifies the return value
+	}()
+	return 5 // Actually returns 6
 }

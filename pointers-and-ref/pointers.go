@@ -18,4 +18,5 @@ func test() {
 
 	// p = pointer = hexadecimal
 	fmt.Printf("x: %d y: %p and y type: %T\n", x, y, y)
+	fmt.Printf("y: %p and y type: %T -- now dereferenced *y: %d and its type: %T \n", y, y, *y, *y)
 }

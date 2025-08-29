@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
 )
 
@@ -17,6 +19,17 @@ func main() {
 		log.Fatal("$PORT must be set")
 	}
 
-	fmt.Printf("Listening on port %s\n", port)
+	router := chi.NewRouter()
+
+	server := &http.Server{
+		Addr:    ":" + port,
+		Handler: router,
+	}
+
+	log.Printf("Server starting on port %s\n", port)
+	err := server.ListenAndServe()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }

@@ -1,4 +1,3 @@
 ## Run it
-  $(cat server/curl/x.txt)
 
-
+$(cat server/curl/x.txt)

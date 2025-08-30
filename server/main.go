@@ -14,7 +14,7 @@ import (
 func main() {
 	fmt.Println("Hello, World!")
 	godotenv.Load("local.env")
-	port := os.Getenv("PORT")
+	port := os.Getenv("SERVER_PORT")
 
 	if port == "" {
 		log.Fatal("$PORT must be set")

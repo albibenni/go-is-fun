@@ -17,7 +17,7 @@ services:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    env_file: .env.local
+    env_file: local.env
     networks:
       - my-network
   ## S3 Service
@@ -30,7 +30,7 @@ services:
     volumes:
       - ./docker/minio-storage:/data
     command: server --console-address ":9001" /data
-    env_file: .env.local
+    env_file: local.env
     restart: always
     networks:
       - my-network

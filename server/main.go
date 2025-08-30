@@ -35,6 +35,13 @@ func main() {
 		Handler: router,
 	}
 
+	v1Router := chi.NewRouter()
+
+	v1Router.Get("/healthz", handlerReadiness)
+	v1Router.Get("/err", handlerErr)
+
+	router.Mount("/v1", v1Router)
+
 	log.Printf("Server starting on port %s\n", port)
 	err := server.ListenAndServe()
 	if err != nil {

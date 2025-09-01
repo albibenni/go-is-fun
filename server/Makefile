@@ -1,7 +1,7 @@
 .PHONY: build test run clean dev compose migrate-up migrate-down lint
 
 build:
-	go build -o && ./server
+	go build -o server && ./server
 
 test:
 	go test ./...

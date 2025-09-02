@@ -1,4 +1,4 @@
-.PHONY: build test run clean dev compose migrate-up migrate-down lint
+.PHONY: build test run clean dev compose migrate-up migrate-down lint generate
 
 build:
 	go build -o server && ./server
@@ -8,6 +8,9 @@ test:
 
 run:
 	go run .
+
+generate:
+	sqlc generate
 
 migrate-up:
 	goose postgres postgresql://albibenni:password@localhost:5432/go-db up -dir ./sql/schema

@@ -41,6 +41,11 @@ func (cfg *apiConfig) handlerCreateFeed(w http.ResponseWriter, r *http.Request, 
 	respondWithJSON(w, http.StatusOK, databaseFeedToFeed(feed))
 }
 
-// func (cfg *apiConfig) handlerGetFeed(w http.ResponseWriter, r *http.Request, feed database.feed) {
-// 	respondWithJSON(w, http.StatusOK, databaseFeedToFeed(feed))
-// }
+func (cfg *apiConfig) handlerGetFeeds(w http.ResponseWriter, r *http.Request) {
+	feeds, err := cfg.DB.GetFeeds(r.Context())
+	if err != nil {
+		respondWithError(w, http.StatusBadRequest, fmt.Sprintf("Couldn't get feeds: %s", err))
+		return
+	}
+	respondWithJSON(w, http.StatusOK, databaseFeedsToFeeds(feeds))
+}

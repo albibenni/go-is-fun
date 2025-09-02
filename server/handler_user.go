@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/albibenni/go-exercises/server/internal/auth"
 	"github.com/albibenni/go-exercises/server/internal/database"
 	"github.com/google/uuid"
 )
@@ -31,6 +32,21 @@ func (cfg *apiConfig) handlerUsersCreate(w http.ResponseWriter, r *http.Request)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, fmt.Sprintf("Couldn't create user: %s", err))
 		return
+	}
+
+	respondWithJSON(w, http.StatusOK, databaseUserToUser(user))
+}
+
+func (cfg *apiConfig) handlerGetUser(w http.ResponseWriter, r *http.Request) {
+	apiKey, err := auth.GetAPIKey(r.Header)
+	if err != nil {
+		respondWithError(w, http.StatusForbidden, fmt.Sprintf("Auth error: %s", err))
+	}
+
+	user, err := cfg.DB.GetUserByAPIKey(r.Context(), apiKey)
+
+	if err != nil {
+		respondWithError(w, http.StatusBadRequest, fmt.Sprintf("Couldn't get user: %s", err))
 	}
 
 	respondWithJSON(w, http.StatusOK, databaseUserToUser(user))

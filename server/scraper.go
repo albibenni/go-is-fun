@@ -2,10 +2,7 @@ package main
 
 import (
 	"context"
-	"encoding/xml"
-	"io"
 	"log"
-	"net/http"
 	"sync"
 	"time"
 
@@ -43,7 +40,7 @@ func scrapeFeed(db *database.Queries, wg *sync.WaitGroup, feed database.Feed) {
 		return
 	}
 
-	feedData, err := fetchFeed(feed.Url)
+	feedData, err := urlToFeed(feed.Url)
 	if err != nil {
 		log.Printf("Couldn't collect feed %s: %v", feed.Name, err)
 		return

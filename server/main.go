@@ -60,6 +60,9 @@ func main() {
 
 	v1Router := chi.NewRouter()
 
+	// start scraper in background
+	go startScraping(apiConfig.DB, 10, 60*1000*1000*1000) // every minute
+
 	v1Router.Get("/healthz", handlerReadiness)
 	v1Router.Get("/err", handlerErr)
 	v1Router.Post("/users/user", apiConfig.handlerUsersCreate)

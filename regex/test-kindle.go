@@ -11,12 +11,15 @@ func main() {
 	// The real implementation would go here.
 	var testing string
 	testing = "The Manager's Path: A Guide for Tech Leaders Navigating Growth and Change (Camille Fournier)"
+	testing3 := "Linux Basics for Hackers, 2nd Edition: Getting Started With Networking, Scripting, and Security in Kali (OccupyTheWeb)"
 	testing2 := "Get Better at Anything 12 Maxims for Mastery (Scott H. Young) (Z-Library)"
 	aut, newStr := getAuthorAndFormatTitle(testing2)
 	aut2, newStr2 := getAuthorAndFormatTitle(testing)
+	aut3, newStr3 := getAuthorAndFormatTitle(testing3)
 
 	fmt.Printf("author: %s, string formatted: %s\n", aut, newStr)
 	fmt.Printf("author: %s, string formatted: %s\n", aut2, newStr2)
+	fmt.Printf("author: %s, string formatted: %s\n", aut3, newStr3)
 
 }
 func getAuthorAndFormatTitle(str string) (author string, formattedTitle string) {

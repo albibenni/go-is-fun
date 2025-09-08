@@ -1,17 +1,20 @@
 package routes
 
 import (
+	"github.com/albibenni/go-exercises/auth/middleware"
+	"github.com/albibenni/go-exercises/auth/services"
 	"github.com/gin-gonic/gin"
 )
 
 func SetupRoutes(router *gin.Engine) {
-	router.POST("/signup", Signup())
-	router.POST("/login", controllers.Login())
+	router.POST("/signup", services.Signup())
+	router.POST("/login", services.Login())
 
 	protected := router.Group("/")
 	protected.Use(middleware.Authenticate())
+
 	{
-		protected.GET("/users", controllers.Getusers())
-		protected.GET("/user/:id", controllers.Getuser())
+		protected.GET("/users", services.Getusers())
+		protected.GET("/user/:id", services.Getuser())
 	}
 }

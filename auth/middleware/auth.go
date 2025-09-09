@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/albibenni/go-exercises/auth/helpers"
 	"github.com/gin-gonic/gin"
-	"golang.org/x/tools/go/analysis/passes/nilfunc"
 )
 
 func Authenticate() gin.HandlerFunc {
@@ -19,7 +19,7 @@ func Authenticate() gin.HandlerFunc {
 			return
 		}
 		authHeader = strings.TrimPrefix(authHeader, "Bearer")
-		claims, err := ValidateToken(authHeader)
+		claims, err := helpers.ValidateToken(authHeader)
 
 		if err != nil {
 			log.Printf("Token validation error: %v", err)

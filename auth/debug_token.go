@@ -37,3 +37,4 @@ func test() {
 		fmt.Printf("Token validation successful: %+v\n", claims)
 	}
 }
+

@@ -9,14 +9,25 @@ services:
   #     - aws-s3
   #   networks:
   #     - my-network
-  postgres:
-    container_name: godb
-    image: postgres
+  # postgres:
+  #   container_name: godb
+  #   image: postgres
+  #   restart: always
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   env_file: local.env
+  #   networks:
+  #     - my-network
+  mongo:
+    container_name: jwt-mongo
+    image: mongo
     restart: always
     ports:
-      - 5432:5432
+      - "27017:27017"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./docker/mongo-data:/data/db
     env_file: local.env
     networks:
       - my-network
@@ -35,7 +46,7 @@ services:
     networks:
       - my-network
 volumes:
-  postgres_data:
+  mongo_data:
   minio_storage:
 networks:
   my-network:

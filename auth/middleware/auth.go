@@ -18,7 +18,8 @@ func Authenticate() gin.HandlerFunc {
 			ctx.Abort()
 			return
 		}
-		authHeader = strings.TrimPrefix(authHeader, "Bearer")
+		authHeader = strings.TrimPrefix(authHeader, "Bearer ")
+		log.Printf("Received token: %s", authHeader)
 		claims, err := helpers.ValidateToken(authHeader)
 
 		if err != nil {

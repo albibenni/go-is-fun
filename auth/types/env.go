@@ -7,7 +7,8 @@ import (
 type EnvVar string
 
 const (
-	ServerPath EnvVar = "SERVER_PATH"
+	ServerPort EnvVar = "SERVER_PORT"
+	JWTSecret  EnvVar = "JWT_SECRET"
 )
 
 func (e EnvVar) Value() string {

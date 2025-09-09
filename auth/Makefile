@@ -9,15 +9,6 @@ test:
 run:
 	go run .
 
-generate:
-	sqlc generate
-
-migrate-up:
-	goose postgres postgresql://albibenni:password@localhost:5432/go-db up -dir ./sql/schema
-
-migrate-down:
-	goose postgres postgresql://albibenni:password@localhost:5432/go-db down -dir ./sql/schema
-
 dev:
 	air # or use go run with file watching
 
